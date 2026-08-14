@@ -1,6 +1,8 @@
 #app.py
 #main file with gradio ui
 
+from pickle import APPEND
+
 import gradio as gr
 import translator
 from utils import helper
@@ -29,7 +31,7 @@ def do_clear():
 def main():
     language = helper.get_language()
     with gr.Blocks() as app:
-        gr.Markdown("## Simple language Translator ")
+        gr.Markdown("##Language Translator ")
 
         with gr.Row():
             lang1 = gr.Dropdown(language, label= "From", value= "English")
@@ -46,6 +48,7 @@ def main():
             btn1.click(do_translate, inputs=[txt_in, lang1, lang2], outputs= txt_out)
             btn2.click(do_clear, outputs= [txt_in, lang1, txt_out])
 
-    app.launch()
-if __name__ == "__main__"
-main()
+    app.launch(share=True)
+if __name__ == "__main__":
+    main()
+    

@@ -8,5 +8,6 @@
     ],
     "python.analysis.extraPaths": [
         "./utils"
-    ]
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
