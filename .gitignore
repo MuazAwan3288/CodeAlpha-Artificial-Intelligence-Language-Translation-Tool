@@ -1,4 +1,12 @@
+# Virtual environment
 .venv/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Gradio temporary files
+.gradio/
+
+# VS Code settings
 .vscode/
