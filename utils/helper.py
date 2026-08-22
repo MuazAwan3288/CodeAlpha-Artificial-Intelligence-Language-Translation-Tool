@@ -1,6 +1,6 @@
-#this file has some small functions that we need in the app
-# we make a list of languages with their short codes 
-# huggingface modelss need codes like en, fr, de etc 
+# This file has some small functions that we need in the app
+# We make a list of languages with their short codes 
+# Huggingface modelss need codes like en, fr, de etc 
 
 language_list = {
     "English": "en",
@@ -12,7 +12,7 @@ language_list = {
     "Urdu": "ur"
     }
 
-#this function will return all languages name for dropdown menu
+# This function will return all languages name for dropdown menu
 
 def get_language():
     name = []
@@ -20,7 +20,7 @@ def get_language():
         name.append(i)
     return name
 
-#this function checks if user inout is ok or not 
+# This function checks if user inout is ok or not 
 
 def check_input(text, from_lang, to_lang):
 
@@ -41,8 +41,8 @@ def check_input(text, from_lang, to_lang):
     #IF ALL Okay
     return True, "OK"
 
-#This function makes the model name for huggingface
-#example: Helsinki-NLP/opus-mt-en-fr
+# This function makes the model name for huggingface
+# Example: Helsinki-NLP/opus-mt-en-fr
 
 def get_model(from_lang, to_lang):
     code1 = language_list[from_lang]
@@ -50,4 +50,3 @@ def get_model(from_lang, to_lang):
 
     model_name = f"Helsinki-NLP/opus-mt-{code1}-{code2}"
     return model_name
-

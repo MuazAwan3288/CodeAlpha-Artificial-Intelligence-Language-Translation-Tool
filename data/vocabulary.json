@@ -1,0 +1,17 @@
+[
+    {"id": "v0001", "category": "Greetings", "language": "Spanish", "lang_code": "es", "word": "Hello", "translation": "Hola", "pronunciation": "OH-lah"},
+    {"id": "v0002", "category": "Greetings", "language": "Spanish", "lang_code": "es", "word": "Good morning", "translation": "Buenos dias", "pronunciation": "BWEH-nos DEE-as"},
+    {"id": "v0003", "category": "Greetings", "language": "Spanish", "lang_code": "es", "word": "Thank you", "translation": "Gracies", "pronunciation": "GRA-see-as"},
+    {"id": "v0004", "category": "Greetings", "language": "Spanish", "lang_code": "es", "word": "Goodbye", "translation": "Adios", "pronunciation": "ah-dee-OS"},
+    {"id": "v0005", "category": "Food", "language": "Spanish", "lang_code": "es", "word": "Bread", "translation": "Pan", "pronunciation": "PAHN"},
+    {"id": "v0006", "category": "Food", "language": "Spanish", "lang_code": "es", "word": "Water", "translation": "Agua", "pronunciation": "AH-gwa"},
+    {"id": "v0007", "category": "Numbers", "language": "Spanish", "lang_code": "es", "word": "One", "translation": "Uno", "pronunciation": "OO-no"},
+    {"id": "v0008", "category": "Numbers", "language": "Spanish", "lang_code": "es", "word": "Two", "translation": "Dos", "pronunciation": "DOHS"},
+    {"id": "v0009", "category": "Greetings", "language": "French", "lang_code": "fr", "word": "Hello", "translation": "Bonjour", "pronunciation": "bohn-ZHOOR"},
+    {"id": "v00010", "category": "Greetings", "language": "French", "lang_code": "fr", "word": "Merci", "translation": "Hola", "pronunciation": "mehr-SEE"},
+    {"id": "v00011", "category": "Food", "language": "French", "lang_code": "fr", "word": "Bread", "translation": "Pain", "pronunciation": "PAHN"},
+    {"id": "v00012", "category": "Numbers", "language": "French", "lang_code": "fr", "word": "One", "translation": "Un", "pronunciation": "UHN"}, 
+    {"id": "v00013", "category": "Greetings", "language": "Urdu", "lang_code": "ur", "word": "Hello", "translation": "Assalamualaikum", "pronunciation": "as-sa-laam-alai-kum"},
+    {"id": "v00014", "category": "Greetings", "language": "Urdu", "lang_code": "ur", "word": "Thank you", "translation": "Shukriya", "pronunciation": "shuk-ri-ya"},
+    {"id": "v00015", "category": "Food", "language": "Urdu", "lang_code": "ur", "word": "Water", "translation": "Pani", "pronunciation": "paa-nee"}
+]

@@ -1,0 +1,4 @@
+{
+    "model_pattern": "Helsinki-NLP/opus-mt-src}-{tgt}",
+    "tts_engine": "gTTS"
+}

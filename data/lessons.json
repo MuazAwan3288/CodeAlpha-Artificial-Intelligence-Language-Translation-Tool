@@ -1,0 +1,7 @@
+[
+    {"id": "1001", "title": "Spanish greetings", "category": "Vocabulary", "language": "Spanish", "vocabulary_ids": ["v001", "v002", "v003", "v004"]},
+    {"id": "1002", "title": "Spanish Food Basics", "category": "Vocabulary", "language": "Spanish", "vocabulary_ids": ["v005", "v006"]},
+    {"id": "1003", "title": "Spanish Number", "category": "Vocabulary", "language": "Spanish", "vocabulary_ids": ["v007", "v008"]},
+    {"id": "1004", "title": "French Greetings", "category": "Vocabulary", "language": "French", "vocabulary_ids": ["v009", "v0010"]},
+    {"id": "1005", "title": "Urdu Greetings", "category": "Vocabulary", "language": "Urdu", "vocabulary_ids": ["v0013", "v0014"]}
+]
