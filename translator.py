@@ -3,7 +3,6 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from utils.helper import get_model
-
 class Translator:
     def __init__(self):
 #we keep models in memory so we dont download again
@@ -11,7 +10,7 @@ class Translator:
         self.models = {}
         self.tokenizers = {}
 
-        if torch.cuda.is_available():
+        if torch.cpu.is_available():
             self.device = "cuda"
         else:
             self.device = "cpu"

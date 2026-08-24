@@ -1,12 +1,6 @@
-# Virtual environment
-.venv/
-
-# Python cache
 __pycache__/
 *.pyc
-
-# Gradio temporary files
+.venv/
+venv/
 .gradio/
-
-# VS Code settings
-.vscode/
+assets/audio/*.mp3

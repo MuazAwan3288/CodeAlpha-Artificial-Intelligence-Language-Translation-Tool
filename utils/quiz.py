@@ -17,7 +17,7 @@ def make_question(card, all_cards):
     else:
         wrong = others
 
-    choices = wrong + card["translation"]        
+    choices = wrong + [card["translation"]]
     random.shuffle(choices)
     question ={
         "question": "What is the translation of '" + card["word"] + "' ?",
@@ -26,10 +26,24 @@ def make_question(card, all_cards):
         }
     return question
 
-# This function builds a full quize ( list of questions ) for acategory
+# This function builds a full quize ( list of questions ) for category
 
-def build_answer(question, selected_choice):
+def build_quiz(category, num_questions = 5):
+    cards = get_cards_by_category(category)
+    random.shuffle(cards)
+
+    if num_questions > len(cards):
+        num_questions = len(cards)
+
+    questions = []    
+    for i in range(num_questions):
+        q = make_question(cards[i], cards)
+        questions.append(q)
+
+# This function check answer of quiz
+
+def check_answer(question, selected_choice):
     if selected_choice == question["answer"]:
         return True
     else:
-        False
+        return False

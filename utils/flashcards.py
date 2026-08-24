@@ -4,28 +4,43 @@
 import json
 import os 
 
-VOCAB_FILE = os.path.json("data", "vocabulary.json")
+VOCAB_FILE = os.path.join("data", "vocabulary.json")
 
-# This function load all vocabulary words from the json fiel
+# ===============
+# LOAD VOCABULARY
+# ===============
 
 def load_vocabulary():
-    with open(VOCAB_FILE, "r", encoding = "utf-d") as f:
+
+# Load all vocabulary words from the JSON files.
+
+    with open(VOCAB_FILE, "r", encoding = "utf-8") as f:
         data = json.load(f)
     return data
 
-# This function gives lost of categories available (like Greeting, Food, numbers)
+# ==============
+# GET CATEGORIES
+# ==============
 
-def get_categtories():
+def get_categories():
+
+# Return a list of available vocabulary categories.
+
     words = load_vocabulary()
-    categ = []
+    categories = []
     for w in words:
-        if w["category"] not in categ:
-            categ.append(w["categiry"])
-    return categ
+        if w["category"] not in categories:
+            categories.append(w["category"])
+    return categories
 
-# This function gives only words that belongs to one category 
+# ======================
+# GET CARDS BBY CATEGORY
+# ======================
 
-def get_card_by_category(category):
+def get_cards_by_category(category, language):
+
+# Return only cards belonging to the selected category.
+
     words = load_vocabulary()
     cards = []
     for w in words:
@@ -41,4 +56,4 @@ def get_card_front(card):
 # This function shows back side of card (answer + how to say it)
 
 def get_card_back(card):
-    return card["translate"] + "\nPronunciatiom: "+ card["Pronunciation"]
+    return card["translation"] + "\nPronunciatiom: "+ card["pronunciation"]

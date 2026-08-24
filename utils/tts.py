@@ -2,9 +2,9 @@
 # We use gTTS (need internet connection tp awork)
 
 import os
-from tts import gTTS
+from gtts import gTTS
 
-AUDIO_FOLDER = os.path.json("assets", "audio")
+AUDIO_FOLDER = os.path.join("assets", "audio")
 
 # This function makes an mp3 file for given text and return the path
 # Language cpde example: "es" for spanish, "fr" fro french
@@ -13,7 +13,7 @@ def make_audio(text, lang_code):
     if not os.path.exists(AUDIO_FOLDER):
         os.makedirs(AUDIO_FOLDER)
 
-    file_path = os.path.join(AUDIO_FOLDER, "speech.pm3")
+    file_path = os.path.join(AUDIO_FOLDER, "speech.mp3")
 
     try:
         speech = gTTS(text = text, lang= lang_code)
