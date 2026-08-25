@@ -1,24 +1,30 @@
-#This file loads the model and does translation
+# This file loads Hugging face translation models and perform translation
 
 import torch
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM)
 from utils.helper import get_model
 class Translator:
     def __init__(self):
-#we keep models in memory so we dont download again
-#we use dictionary to store models with their name as key
+
+# Store loadedd models in memory.
+# This prevents downloadiinig/loading them repeatedly.
+
         self.models = {}
         self.tokenizers = {}
 
-        if torch.cpu.is_available():
+        if torch.cuda.is_available():
             self.device = "cuda"
         else:
             self.device = "cpu"
 
-# print("Using device:" self.device) # for checking CPU/GPU
-# this loads model if not already loaded
+# ==========
+# LOAD MODEL
+# ==========
 
     def load_model(self, model_name):
+
+# Load only if model isn't alrready loaded.
+
         if model_name not in self.models:
             tok = AutoTokenizer.from_pretrained(model_name)
             mod = AutoModelForSeq2SeqLM.from_pretrained(model_name)
@@ -30,20 +36,25 @@ class Translator:
 
         return self.tokenizers[model_name], self.models[model_name]
 
-#main fuction tp translate text
+# =========
+# TRANSLATE
+# =========
 
     def do_translation(self, text, from_lang, to_lang):
+
+# Main fuction tp translate text
+
         model_name = get_model(from_lang, to_lang)
 
         try:
             tokenizer, model = self.load_model(model_name)
- #covert text to tokens
+# Covert text to tokens
             inputs = tokenizer(text, return_tensors = "pt", padding = True, truncation = True)
             inputs = inputs.to(self.device)
-#generate translation
+# Generate translation
             with torch.no_grad():
                 outputs = model.generate(**inputs, max_length = 512)
-#convert token back to text
+# Convert token back to text
             result = tokenizer.decode(outputs[0], skip_special_tokens= True)
             return result
         except Exception as e:

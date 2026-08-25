@@ -12,17 +12,26 @@ language_list = {
     "Urdu": "ur"
     }
 
-# This function will return all languages name for dropdown menu
+# ============
+# GET LANGUAGE
+# ============
 
 def get_language():
+
+# This function will return all languages name 
+
     name = []
     for i in language_list:
         name.append(i)
     return name
 
-# This function checks if user inout is ok or not 
+# ===========
+# CHECK INPUT
+# ===========
 
 def check_input(text, from_lang, to_lang):
+
+# This function checks if user input is ok or not 
 
     if text is None or text == "":
         return False, "Please Write Some Thing to Translate"
@@ -41,10 +50,16 @@ def check_input(text, from_lang, to_lang):
     #IF ALL Okay
     return True, "OK"
 
-# This function makes the model name for huggingface
-# Example: Helsinki-NLP/opus-mt-en-fr
+# ==============
+# GET MODEL NAME
+# ==============
 
 def get_model(from_lang, to_lang):
+    
+# This function makes the model name for huggingface
+# Example: English -> French
+# Helsinki-NLP/opus-mt-en-fr
+
     code1 = language_list[from_lang]
     code2 = language_list[to_lang]
 

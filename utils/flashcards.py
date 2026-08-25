@@ -33,9 +33,9 @@ def get_categories():
             categories.append(w["category"])
     return categories
 
-# ======================
-# GET CARDS BBY CATEGORY
-# ======================
+# =====================
+# GET CARDS BY CATEGORY
+# =====================
 
 def get_cards_by_category(category, language):
 
@@ -48,12 +48,22 @@ def get_cards_by_category(category, language):
             cards.append(w)
     return cards
 
-# This function shows front sode of card (the question word, not the answer)
+# ==========
+# CARD FRONT
+# ==========
 
 def get_card_front(card):
+
+# This function return front side of card (the question word, not the answer)
+
     return card["word"] + " ("+ card["language"]+")"
 
-# This function shows back side of card (answer + how to say it)
+# =========
+# CARD BACK
+# =========
 
 def get_card_back(card):
-    return card["translation"] + "\nPronunciatiom: "+ card["pronunciation"]
+
+# This function return back side of card (answer + how to say it)
+
+    return card["translation"] + "\nPronunciation: "+ card["pronunciation"]

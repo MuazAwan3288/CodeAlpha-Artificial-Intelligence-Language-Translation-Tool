@@ -1,6 +1,15 @@
+# Virtual environment
+.venv/
+
+# Python cache
 __pycache__/
 *.pyc
-.venv/
-venv/
+
+# VS Code
+.vscode/
+
+# Gradio
 .gradio/
+
+# Generated audio
 assets/audio/*.mp3

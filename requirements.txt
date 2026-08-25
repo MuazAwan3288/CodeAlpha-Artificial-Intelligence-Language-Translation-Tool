@@ -1,5 +1,5 @@
-torch
-transformers
-gradio
-gTTS
-sentencepiece
+gradio>=6.0.0
+torch>=2.0.0
+transformers>=4.40.0
+sentencepiece>=0.1.99
+gTTS>=2.5.0

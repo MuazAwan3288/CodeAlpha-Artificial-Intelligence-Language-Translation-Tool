@@ -1,14 +1,19 @@
-# This file saves and loads progree so we remember how much they studied 
-# We just use a sample json file, no darabase needed for this project
+# This file saves and loads progree
+# We just use a sample json file, no database needed for this project
 
 import json
 import os
 
 PROGRESS_FIle = os.path.join("data", "progress.json")
 
-# This function loads progree from file, if file missing we start fresh
+# =============
+# LOAD PROGRESS
+# =============
 
 def load_progress():
+    
+# This function loads progree from file, if file missing we start fresh
+
     if not os.path.exists(PROGRESS_FIle):
         return {"lessons_done": [], "quiz_scores": [], "cards_seen": 0}
 
@@ -16,30 +21,50 @@ def load_progress():
         data = json.load(f)
     return data
 
-# This function save progree back tp file
+# =============
+# SAVE PROGRESS
+# =============
 
 def save_progress(data):
+
+# This function save progree back tp file.
+
     with open(PROGRESS_FIle, "w", encoding = "utf-8") as f:
         json.dump(data, f, indent = 4)
 
-# Call this function everytime user views a flashcard answer
+# ==============
+# ADDD CARD VIEW
+# ==============
 
 def add_card_seen():
+
+# Increase the number of viewed flashcards.
+    
     data = load_progress()
     data["cards_seen"] = data["cards_seen"] + 1
     save_progress(data)
     return data["cards_seen"]
 
-# Call this function after a qize is finished
+# ==============
+# ADD QUIZ SCORE
+# ==============
 
 def add_quiz_score(score, total):
+
+# Save a coplete quize score.
+
     data = load_progress()
     data["quiz_scores"].append({"score": score, "total": total})
     save_progress(data)
 
-# This function make a small text summary for the progress tab
+# ================
+# PROGRESS SUMARRY
+# ================
 
 def get_summary():
+
+# Create a rreadable progress summary.
+#     
     data = load_progress()    
     total_quizzes = len(data["quiz_scores"])
 

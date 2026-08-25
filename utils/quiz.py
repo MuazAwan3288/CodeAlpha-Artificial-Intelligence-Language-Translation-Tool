@@ -1,23 +1,26 @@
-# This file builds a simple multiple choice quize using our vocabularyy words
+# This file create a simple multiple choice quiz
+# using vocabulary words
 
 import random 
 from utils.flashcards import get_cards_by_category
 
-# This function makes one quize question from a card
-# It picks 3 wrong answer from other cards in same category so choice make sense
+# =================
+# MAKE ONE QUESTION
+# =================
 
 def make_question(card, all_cards):
+
+# Create one multiple choice question
+# The correct answer comes from the selected card.Three wrong answers are selected from other cards.
+
     others = []
-    for c in all_cards:
-        if c["id"] != card["id"]:
-            others.append(c["translation"])
+    for other_cards in all_cards:
+        if other_cards["id"] != card["id"]:
+            others.append(other_cards["translation"])
 
-    if len(others) >= 3:
-        wrong = random.sample(others, 3)
-    else:
-        wrong = others
-
-    choices = wrong + [card["translation"]]
+    
+    wrong_answers = random.sample(others, min(3, len(others)))
+    choices = wrong_answers + [card["translation"]]
     random.shuffle(choices)
     question ={
         "question": "What is the translation of '" + card["word"] + "' ?",
@@ -26,10 +29,18 @@ def make_question(card, all_cards):
         }
     return question
 
-# This function builds a full quize ( list of questions ) for category
+# ==========
+# BUILD QUIZ
+# ==========
 
 def build_quiz(category, num_questions = 5):
+
+# Build a complet quiz for the selected category
+     
     cards = get_cards_by_category(category)
+    if not cards:
+        return []
+    
     random.shuffle(cards)
 
     if num_questions > len(cards):
@@ -40,10 +51,15 @@ def build_quiz(category, num_questions = 5):
         q = make_question(cards[i], cards)
         questions.append(q)
 
-# This function check answer of quiz
+    return questions
+
+# ============
+# CHECK ANSWER
+# ============
 
 def check_answer(question, selected_choice):
-    if selected_choice == question["answer"]:
-        return True
-    else:
-        return False
+
+# Check whether the selected answer is correct.
+
+    return selected_choice == question["answer"]
+    
