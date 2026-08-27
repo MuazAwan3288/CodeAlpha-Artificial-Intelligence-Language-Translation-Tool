@@ -37,7 +37,7 @@ def get_categories():
 # GET CARDS BY CATEGORY
 # =====================
 
-def get_cards_by_category(category, language):
+def get_cards_by_category(category, language = None):
 
 # Return only cards belonging to the selected category.
 
@@ -45,7 +45,8 @@ def get_cards_by_category(category, language):
     cards = []
     for w in words:
         if w["category"] == category:
-            cards.append(w)
+            if language is None or w["language"] == language:
+                cards.append(w)
     return cards
 
 # ==========

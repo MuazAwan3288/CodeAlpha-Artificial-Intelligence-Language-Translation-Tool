@@ -1,6 +1,9 @@
 # This file has some small functions that we need in the app
-# We make a list of languages with their short codes 
-# Huggingface modelss need codes like en, fr, de etc 
+# It manages supported languages and Huggingface models name.
+
+# ===================
+# SUPPORTED LANGUAGES
+# ===================
 
 language_list = {
     "English": "en",
@@ -12,28 +15,25 @@ language_list = {
     "Urdu": "ur"
     }
 
-# ============
-# GET LANGUAGE
-# ============
+# =================
+# GET LANGUAGE LIST
+# =================
 
 def get_language():
 
-# This function will return all languages name 
+# Return name of all supported languages.
 
-    name = []
-    for i in language_list:
-        name.append(i)
-    return name
+    return list(language_list.keys())
 
-# ===========
-# CHECK INPUT
-# ===========
+# ================
+# CHECK USER INPUT
+# ================
 
 def check_input(text, from_lang, to_lang):
 
-# This function checks if user input is ok or not 
+# This function checks user input is ok or not.
 
-    if text is None or text == "":
+    if text is None or text.strip() == "":
         return False, "Please Write Some Thing to Translate"
 
     if text.isspace() == True:
@@ -47,16 +47,18 @@ def check_input(text, from_lang, to_lang):
 
     if from_lang == to_lang:
         return False, "Please Select Different Language"
-    #IF ALL Okay
+
+# IF aLL Okay
+
     return True, "OK"
 
-# ==============
-# GET MODEL NAME
-# ==============
+# ===========================
+# GET HUGGING FACE MODEL NAME
+# ===========================
 
 def get_model(from_lang, to_lang):
     
-# This function makes the model name for huggingface
+# This function generate the huggingface translation model name
 # Example: English -> French
 # Helsinki-NLP/opus-mt-en-fr
 

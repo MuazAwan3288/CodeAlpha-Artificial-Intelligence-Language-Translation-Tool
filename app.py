@@ -8,18 +8,18 @@
 # 2. Flashcards
 # 3. Quiz
 # 4. Progress Tracking
+# 5. Lessons
 #
 # =============================================
 
 import gradio as gr
-
 import translator
-
 from utils import helper
 from utils import flashcards
 from utils import quiz
 from utils import progress
 from utils import tts
+from utils import lessons
 
 
 # ================
@@ -149,6 +149,16 @@ def submit_answer(questions, index, score, selected):
     
     next_question = questions[index]
     return (message + "\n\n" + next_question["question"],gr.update(choices=next_question["choices"], value=None), questions, index, score)
+
+# =================
+# LESSONS FUNCTIONS
+# =================
+
+def show_lesson(title):
+    if not title:
+        return "Please select a lesson."
+
+    return lessons.format_lesson(title)
 
 # ========
 # PROGRESS
@@ -280,6 +290,19 @@ def main():
                 progress_box = gr.Textbox(label="Progress", interactive=False, lines=5)
                 refresh_btn = gr.Button("🔄 Refresh Progress")
                 refresh_btn.click(refresh_progress, outputs=progress_box)
+
+# =======
+# LESSONS
+# =======
+
+            with gr.Tab("📚 Lessons"):
+
+                lesson_titles = lessons.get_lesson_titles()
+
+                lesson_dropdown = gr.Dropdown(choices = lesson_titles, label = "Select Lesson", value = lesson_titles[0] if lesson_titles else  None)
+                lesson_content = gr.Markdown("Select a lesson to begin.")
+                lesson_btn = gr.Button("📚 Open Lesson", variant = "primary")
+                lesson_btn.click(fn = show_lesson, inputs = lesson_dropdown, outputs = lesson_content)
 
 
 # ======
